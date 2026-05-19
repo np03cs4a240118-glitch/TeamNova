@@ -1,0 +1,619 @@
+{
+  "_meta": {
+    "version": "2.0",
+    "notes": "v2.0: 39 diseases + 5 red flags. All original 21 retained with expanded casual/childlike keyword variants. 18 new diseases added covering common gaps. Specialties used: Cardiology, Pediatrics, Orthopedics, Dermatology, General Medicine, Gynecology, Neurology, Psychiatry, ENT, Ophthalmology — all present in seeded doctors table."
+  },
+
+  "disclaimer": "I'm an information assistant, not a doctor. The suggestions below are possibilities — never a diagnosis. Please confirm with a qualified physician.",
+
+  "red_flags": [
+    {
+      "label": "Possible heart attack",
+      "advice": "Symptoms suggest a possible heart attack. Call emergency services (102 in Nepal) immediately. Do not drive yourself to a hospital.",
+      "specialisations": ["Cardiology"],
+      "match_any": [["chest pain", "chest tightness", "crushing chest pain", "pressure in chest", "heavy chest", "pain in my chest", "my chest hurts"]]
+    },
+    {
+      "label": "Possible stroke",
+      "advice": "Symptoms may indicate a stroke. Call emergency services (102) immediately. Note the time symptoms started.",
+      "specialisations": ["Neurology"],
+      "match_any": [["face drooping", "slurred speech", "sudden weakness", "weakness on one side", "cannot lift arm", "can't lift my arm", "sudden vision loss", "sudden confusion"]]
+    },
+    {
+      "label": "Severe allergic reaction",
+      "advice": "Possible anaphylaxis. Call emergency services (102) immediately.",
+      "specialisations": ["General Medicine"],
+      "match_any": [["throat closing", "swelling of tongue", "swollen tongue", "difficulty breathing after eating", "anaphylaxis", "trouble breathing after a sting"]]
+    },
+    {
+      "label": "Severe breathing difficulty",
+      "advice": "Severe trouble breathing requires urgent care. Call 102 or go to the nearest emergency room.",
+      "specialisations": ["General Medicine"],
+      "match_any": [["cannot breathe", "can't breathe", "gasping for breath", "gasping for air", "severe shortness of breath", "blue lips", "turning blue"]]
+    },
+    {
+      "label": "Suicidal thoughts",
+      "advice": "If you are in crisis, please reach out now. In Nepal, call 1166. Speaking to a professional immediately can help.",
+      "specialisations": ["Psychiatry"],
+      "match_any": [["want to die", "wanting to die", "kill myself", "killing myself", "suicidal thoughts", "end my life", "no reason to live"]]
+    }
+  ],
+
+  "diseases": [
+    {
+      "name": "Common cold",
+      "description": "A mild viral upper-respiratory infection that usually resolves in 7–10 days.",
+      "advice": "Rest, drink warm fluids, and use saline nasal drops. See a doctor if symptoms persist beyond 10 days or fever exceeds 39°C.",
+      "urgency": "low",
+      "specialisations": ["General Medicine"],
+      "symptoms": [
+        { "weight": 3, "keywords": ["runny nose", "stuffy nose", "blocked nose", "nasal congestion", "snotty nose", "nose is running"] },
+        { "weight": 3, "keywords": ["sore throat", "scratchy throat", "throat pain", "throat hurts", "my throat hurts"] },
+        { "weight": 2, "keywords": ["sneezing", "sneeze", "keep sneezing", "lots of sneezes"] },
+        { "weight": 2, "keywords": ["mild cough", "cough", "coughing", "little cough"] },
+        { "weight": 2, "keywords": ["mild fever", "low fever", "low-grade fever"] },
+        { "weight": 1, "keywords": ["body ache", "tired", "feeling tired"] }
+      ]
+    },
+    {
+      "name": "Influenza (flu)",
+      "description": "A more severe viral infection than a cold, with high fever and significant body aches.",
+      "advice": "Rest, hydrate, take paracetamol for fever. See a doctor if breathing becomes difficult or fever stays above 39°C for > 3 days.",
+      "urgency": "low",
+      "specialisations": ["General Medicine"],
+      "symptoms": [
+        { "weight": 4, "keywords": ["high fever", "fever", "burning up", "really hot", "i feel hot", "very hot"] },
+        { "weight": 3, "keywords": ["body ache", "muscle pain", "muscle aches", "aching all over", "everything hurts", "my whole body hurts"] },
+        { "weight": 3, "keywords": ["chills", "shivering", "cold shivers", "i feel cold"] },
+        { "weight": 3, "keywords": ["headache"] },
+        { "weight": 2, "keywords": ["dry cough", "cough"] },
+        { "weight": 2, "keywords": ["fatigue", "exhausted", "extreme tiredness", "can't get up", "no energy at all"] }
+      ]
+    },
+    {
+      "name": "Migraine",
+      "description": "A recurring headache disorder, often one-sided, with nausea and light sensitivity.",
+      "advice": "Rest in a dark, quiet room. See a neurologist if migraines occur more than 4 times a month.",
+      "urgency": "moderate",
+      "specialisations": ["Neurology"],
+      "symptoms": [
+        { "weight": 4, "keywords": ["throbbing headache", "pulsating headache", "one-sided headache", "headache on one side", "half my head hurts"] },
+        { "weight": 4, "keywords": ["migraine"] },
+        { "weight": 3, "keywords": ["sensitivity to light", "light hurts my eyes", "photophobia", "bright light hurts"] },
+        { "weight": 3, "keywords": ["sensitivity to sound", "noise hurts"] },
+        { "weight": 3, "keywords": ["nausea", "feeling sick"] },
+        { "weight": 2, "keywords": ["aura", "seeing flashes", "visual disturbance"] },
+        { "weight": 2, "keywords": ["vomiting"] }
+      ]
+    },
+    {
+      "name": "Tension headache",
+      "description": "Dull pressure or a tight band around the head, often related to stress or poor posture.",
+      "advice": "OTC pain relief, hydration, and stress management. Persistent or worsening headaches should be evaluated.",
+      "urgency": "low",
+      "specialisations": ["Neurology"],
+      "symptoms": [
+        { "weight": 4, "keywords": ["dull headache", "pressure on head", "tight band around head", "tension headache"] },
+        { "weight": 3, "keywords": ["headache", "head hurts", "my head hurts", "head pain"] },
+        { "weight": 3, "keywords": ["neck stiffness", "stiff neck", "tight neck", "neck hurts"] },
+        { "weight": 2, "keywords": ["sore shoulders", "shoulders ache"] },
+        { "weight": 2, "keywords": ["stress", "stressed out"] }
+      ]
+    },
+    {
+      "name": "Acid reflux (GERD)",
+      "description": "Stomach acid flowing back up, causing burning chest discomfort and a sour taste.",
+      "advice": "Avoid spicy/oily foods, eat smaller meals. Antacids help short-term; see a GP if symptoms persist beyond 2 weeks.",
+      "urgency": "low",
+      "specialisations": ["General Medicine"],
+      "symptoms": [
+        { "weight": 4, "keywords": ["burning in chest", "heartburn", "burning behind sternum", "chest feels burny"] },
+        { "weight": 3, "keywords": ["acid reflux", "reflux", "acidity"] },
+        { "weight": 3, "keywords": ["sour taste in mouth", "bitter taste"] },
+        { "weight": 2, "keywords": ["regurgitation", "food coming back up"] },
+        { "weight": 2, "keywords": ["bloating", "bloated", "feel bloated"] }
+      ]
+    },
+    {
+      "name": "Gastroenteritis (stomach flu)",
+      "description": "Inflammation of the stomach and intestines, usually viral.",
+      "advice": "Drink ORS frequently. Eat bland foods. Seek urgent care for blood in stool, dehydration, or symptoms lasting > 3 days.",
+      "urgency": "moderate",
+      "specialisations": ["General Medicine"],
+      "symptoms": [
+        { "weight": 4, "keywords": ["diarrhoea", "diarrhea", "loose motion", "watery stool", "loose stools", "runny poop"] },
+        { "weight": 4, "keywords": ["vomiting", "throwing up", "puking", "feel like throwing up"] },
+        { "weight": 3, "keywords": ["stomach pain", "stomach ache", "abdominal pain", "tummy pain", "tummy hurts", "belly ache", "belly hurts", "stomach is upset", "upset stomach"] },
+        { "weight": 3, "keywords": ["nausea", "nauseous"] },
+        { "weight": 2, "keywords": ["fever"] },
+        { "weight": 2, "keywords": ["cramps", "stomach cramps"] }
+      ]
+    },
+    {
+      "name": "Urinary tract infection (UTI)",
+      "description": "An infection in the urinary system, more common in women.",
+      "advice": "Drink water. See a doctor for antibiotics — UTIs rarely clear without treatment.",
+      "urgency": "moderate",
+      "specialisations": ["General Medicine", "Gynecology"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["burning when urinating", "burning when peeing", "pain when urinating", "painful urination", "burns when i pee", "hurts when i pee"] },
+        { "weight": 4, "keywords": ["frequent urination", "peeing often", "urgency to urinate", "always need to pee", "have to pee a lot"] },
+        { "weight": 3, "keywords": ["cloudy urine", "smelly urine", "strong-smelling urine"] },
+        { "weight": 3, "keywords": ["lower abdomen pain", "pelvic pain"] },
+        { "weight": 2, "keywords": ["blood in urine"] },
+        { "weight": 2, "keywords": ["urinary tract infection", "uti"] }
+      ]
+    },
+    {
+      "name": "Hypertension (high blood pressure)",
+      "description": "Persistently elevated blood pressure, often without obvious symptoms.",
+      "advice": "Have BP checked. Reduce salt, exercise regularly. A cardiologist or GP can advise on medication.",
+      "urgency": "moderate",
+      "specialisations": ["Cardiology"],
+      "symptoms": [
+        { "weight": 4, "keywords": ["high blood pressure", "hypertension", "elevated bp", "my bp is high"] },
+        { "weight": 3, "keywords": ["headache"] },
+        { "weight": 3, "keywords": ["dizziness", "feeling dizzy", "lightheaded", "head spinning", "feel dizzy"] },
+        { "weight": 2, "keywords": ["nosebleed", "bleeding nose", "nose bleed"] },
+        { "weight": 2, "keywords": ["blurred vision"] }
+      ]
+    },
+    {
+      "name": "Asthma",
+      "description": "A chronic airway condition causing wheezing, breathlessness and chest tightness.",
+      "advice": "Use a prescribed inhaler. Avoid known triggers. Severe attacks need emergency care.",
+      "urgency": "moderate",
+      "specialisations": ["General Medicine"],
+      "symptoms": [
+        { "weight": 4, "keywords": ["wheezing", "whistling sound when breathing", "noisy breathing"] },
+        { "weight": 4, "keywords": ["shortness of breath", "breathless", "out of breath", "hard to breathe"] },
+        { "weight": 3, "keywords": ["chest tightness"] },
+        { "weight": 3, "keywords": ["asthma"] },
+        { "weight": 3, "keywords": ["coughing at night", "night cough"] },
+        { "weight": 2, "keywords": ["cough"] }
+      ]
+    },
+    {
+      "name": "Eczema (atopic dermatitis)",
+      "description": "Chronic inflammatory skin condition with itchy, dry, red patches.",
+      "advice": "Moisturise frequently. Avoid harsh soaps. See a dermatologist if severe.",
+      "urgency": "low",
+      "specialisations": ["Dermatology"],
+      "symptoms": [
+        { "weight": 4, "keywords": ["itchy skin", "skin itching", "very itchy", "skin really itches", "really itchy"] },
+        { "weight": 4, "keywords": ["eczema", "atopic dermatitis"] },
+        { "weight": 3, "keywords": ["dry patches", "dry skin patches", "scaly skin"] },
+        { "weight": 3, "keywords": ["red skin", "red rash", "redness on skin"] },
+        { "weight": 2, "keywords": ["rash", "skin rash", "i have a rash"] },
+        { "weight": 2, "keywords": ["cracked skin"] }
+      ]
+    },
+    {
+      "name": "Acne",
+      "description": "Pimples, blackheads, and inflamed spots from clogged hair follicles.",
+      "advice": "Wash gently twice a day. Don't pick. Persistent acne benefits from dermatologist treatment.",
+      "urgency": "low",
+      "specialisations": ["Dermatology"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["acne", "pimples", "spots on face", "breakouts", "zits", "lots of pimples"] },
+        { "weight": 3, "keywords": ["blackheads", "whiteheads"] },
+        { "weight": 3, "keywords": ["oily skin", "greasy skin"] },
+        { "weight": 2, "keywords": ["red bumps on face"] }
+      ]
+    },
+    {
+      "name": "Allergic rhinitis (hay fever)",
+      "description": "Allergic reaction to airborne triggers causing sneezing and nasal symptoms.",
+      "advice": "Antihistamines help most cases. See an ENT if persistent.",
+      "urgency": "low",
+      "specialisations": ["ENT"],
+      "symptoms": [
+        { "weight": 4, "keywords": ["sneezing fits", "constant sneezing", "can't stop sneezing"] },
+        { "weight": 4, "keywords": ["itchy eyes", "watery eyes"] },
+        { "weight": 3, "keywords": ["runny nose"] },
+        { "weight": 3, "keywords": ["nasal congestion", "blocked nose"] },
+        { "weight": 3, "keywords": ["allergy", "allergic", "allergies"] },
+        { "weight": 2, "keywords": ["itchy throat"] }
+      ]
+    },
+    {
+      "name": "Sinusitis",
+      "description": "Inflammation of the sinuses, often following a cold.",
+      "advice": "Steam inhalation, saline rinses, and rest. See an ENT if symptoms last over 10 days.",
+      "urgency": "low",
+      "specialisations": ["ENT"],
+      "symptoms": [
+        { "weight": 4, "keywords": ["facial pain", "pain around eyes", "pressure in face", "facial pressure", "face hurts"] },
+        { "weight": 4, "keywords": ["sinusitis", "sinus infection", "sinus pain"] },
+        { "weight": 3, "keywords": ["thick nasal discharge", "yellow mucus", "green mucus"] },
+        { "weight": 3, "keywords": ["headache"] },
+        { "weight": 2, "keywords": ["loss of smell", "reduced smell", "can't smell"] }
+      ]
+    },
+    {
+      "name": "Conjunctivitis (pink eye)",
+      "description": "Inflammation of the eye membrane, usually viral or bacterial. Highly contagious.",
+      "advice": "Don't touch the eye. Wash hands frequently. See an eye doctor if it lasts more than a few days.",
+      "urgency": "low",
+      "specialisations": ["Ophthalmology"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["pink eye", "red eye", "eye redness", "conjunctivitis", "my eye is red"] },
+        { "weight": 4, "keywords": ["eye discharge", "discharge from eye", "crust on eyes", "goopy eye", "sticky eye"] },
+        { "weight": 3, "keywords": ["itchy eye", "burning eye", "eye hurts", "my eye hurts"] },
+        { "weight": 2, "keywords": ["watery eye", "watering eyes"] }
+      ]
+    },
+    {
+      "name": "Sprain or strain",
+      "description": "Stretched or torn ligaments or muscles from a fall, twist, or overuse.",
+      "advice": "RICE — Rest, Ice, Compression, Elevation. See a doctor if severe.",
+      "urgency": "low",
+      "specialisations": ["Orthopedics"],
+      "symptoms": [
+        { "weight": 4, "keywords": ["sprained ankle", "twisted ankle", "twisted my ankle", "rolled my ankle"] },
+        { "weight": 4, "keywords": ["sprain", "strain"] },
+        { "weight": 3, "keywords": ["joint pain", "knee pain", "ankle pain", "knee hurts", "ankle hurts"] },
+        { "weight": 3, "keywords": ["swelling", "swollen joint", "swollen knee", "swollen ankle"] },
+        { "weight": 2, "keywords": ["bruising", "bruise"] },
+        { "weight": 2, "keywords": ["limited movement", "can't move my", "stiffness"] }
+      ]
+    },
+    {
+      "name": "Lower back pain",
+      "description": "Mechanical pain in the lower back, often from posture or lifting.",
+      "advice": "Avoid extended bed rest. Apply heat. See a doctor if pain radiates down the leg.",
+      "urgency": "low",
+      "specialisations": ["Orthopedics"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["lower back pain", "back pain", "pain in lower back", "back hurts", "my back hurts"] },
+        { "weight": 3, "keywords": ["stiff back", "back stiffness"] },
+        { "weight": 3, "keywords": ["pain when bending", "hurts to bend"] },
+        { "weight": 2, "keywords": ["leg pain", "shooting leg pain"] }
+      ]
+    },
+    {
+      "name": "Anxiety",
+      "description": "Persistent worry, restlessness, or fear that interferes with daily life.",
+      "advice": "Talk therapy and lifestyle changes help most cases. A psychiatrist can advise if severe.",
+      "urgency": "moderate",
+      "specialisations": ["Psychiatry"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["anxiety", "anxious"] },
+        { "weight": 4, "keywords": ["constant worry", "can't stop worrying", "racing thoughts", "always worried"] },
+        { "weight": 3, "keywords": ["restless", "on edge"] },
+        { "weight": 3, "keywords": ["heart racing", "racing heart"] },
+        { "weight": 3, "keywords": ["trouble sleeping", "can't sleep"] },
+        { "weight": 2, "keywords": ["irritable", "easily irritated"] }
+      ]
+    },
+    {
+      "name": "Depression",
+      "description": "Persistent sadness and loss of interest, lasting more than two weeks.",
+      "advice": "Reach out to a psychiatrist or counsellor. If you have thoughts of self-harm, call 1166 immediately.",
+      "urgency": "moderate",
+      "specialisations": ["Psychiatry"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["depression", "depressed", "feeling hopeless", "hopeless"] },
+        { "weight": 4, "keywords": ["lost interest", "no joy", "nothing feels enjoyable", "nothing makes me happy"] },
+        { "weight": 4, "keywords": ["constant sadness", "very sad", "feel sad all the time", "always sad"] },
+        { "weight": 3, "keywords": ["sleeping too much", "can't get out of bed"] },
+        { "weight": 3, "keywords": ["no appetite", "lost appetite"] },
+        { "weight": 3, "keywords": ["fatigue", "no energy"] }
+      ]
+    },
+    {
+      "name": "Childhood fever",
+      "description": "Fever in children, often viral.",
+      "advice": "Hydrate, use paracetamol per package weight-dose. Seek urgent care if the child is < 3 months, fever > 39°C, or lethargic.",
+      "urgency": "moderate",
+      "specialisations": ["Pediatrics"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["child has fever", "my baby has fever", "kid has fever", "fever in child", "my son has fever", "my daughter has fever"] },
+        { "weight": 4, "keywords": ["fever"] },
+        { "weight": 3, "keywords": ["child not eating", "baby not eating", "kid won't eat"] },
+        { "weight": 3, "keywords": ["child crying", "irritable child", "fussy baby"] },
+        { "weight": 2, "keywords": ["cough"] },
+        { "weight": 2, "keywords": ["runny nose"] }
+      ]
+    },
+    {
+      "name": "Pregnancy-related symptoms",
+      "description": "Common pregnancy symptoms include morning sickness, fatigue, and missed periods.",
+      "advice": "Take a home pregnancy test. Book an antenatal visit with a gynecologist.",
+      "urgency": "low",
+      "specialisations": ["Gynecology"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["missed period", "late period", "haven't had my period"] },
+        { "weight": 4, "keywords": ["pregnant", "think i'm pregnant", "could be pregnant", "might be pregnant"] },
+        { "weight": 4, "keywords": ["morning sickness"] },
+        { "weight": 3, "keywords": ["nausea", "feeling sick in the morning"] },
+        { "weight": 3, "keywords": ["fatigue", "very tired"] },
+        { "weight": 2, "keywords": ["sore breasts", "tender breasts"] }
+      ]
+    },
+    {
+      "name": "Diabetes (suspected)",
+      "description": "Persistently high blood sugar, with thirst, frequent urination, and fatigue.",
+      "advice": "Get a fasting blood sugar test. A GP will advise on diet and medication.",
+      "urgency": "moderate",
+      "specialisations": ["General Medicine"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["high blood sugar", "diabetes", "diabetic"] },
+        { "weight": 4, "keywords": ["excessive thirst", "very thirsty", "drinking lots of water"] },
+        { "weight": 4, "keywords": ["frequent urination", "peeing a lot", "peeing often"] },
+        { "weight": 3, "keywords": ["unexplained weight loss", "losing weight"] },
+        { "weight": 3, "keywords": ["always hungry"] },
+        { "weight": 2, "keywords": ["blurred vision"] },
+        { "weight": 2, "keywords": ["fatigue"] }
+      ]
+    },
+
+    {
+      "name": "Toothache",
+      "description": "Tooth pain is most often caused by cavities, gum disease, or a cracked tooth. A dentist's evaluation is needed (your provider list doesn't include one yet — see a GP for triage).",
+      "advice": "Rinse with warm salt water; avoid very hot or cold foods. See a dentist as soon as possible. A GP can prescribe pain relief in the meantime.",
+      "urgency": "low",
+      "specialisations": ["General Medicine"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["tooth pain", "toothache", "my tooth hurts", "tooth hurts"] },
+        { "weight": 3, "keywords": ["sensitive teeth", "teeth sensitive to cold", "teeth hurt with cold"] },
+        { "weight": 3, "keywords": ["bleeding gums", "gums bleed"] },
+        { "weight": 2, "keywords": ["cavity", "hole in my tooth"] },
+        { "weight": 2, "keywords": ["jaw pain", "jaw hurts"] }
+      ]
+    },
+    {
+      "name": "Food poisoning",
+      "description": "Illness caused by contaminated food, usually with sudden vomiting and diarrhoea within hours of eating.",
+      "advice": "Sip ORS or clear fluids slowly, rest. See a doctor if symptoms last > 48 hours, you're severely dehydrated, or there's blood in vomit/stool.",
+      "urgency": "moderate",
+      "specialisations": ["General Medicine"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["food poisoning", "ate something bad", "bad food", "spoiled food"] },
+        { "weight": 4, "keywords": ["vomiting after eating", "throwing up after eating"] },
+        { "weight": 4, "keywords": ["diarrhoea", "diarrhea", "loose motion"] },
+        { "weight": 3, "keywords": ["stomach cramps", "stomach pain"] },
+        { "weight": 3, "keywords": ["nausea", "feel like throwing up"] },
+        { "weight": 2, "keywords": ["fever"] }
+      ]
+    },
+    {
+      "name": "Dehydration",
+      "description": "Insufficient body fluid, often from heat, vomiting, diarrhoea, or not drinking enough water.",
+      "advice": "Sip ORS or water with a pinch of salt and sugar. Severe cases (sunken eyes, very little urine, confusion) need urgent IV fluids.",
+      "urgency": "moderate",
+      "specialisations": ["General Medicine"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["dehydrated", "dehydration"] },
+        { "weight": 4, "keywords": ["very thirsty", "really thirsty", "thirsty all the time"] },
+        { "weight": 4, "keywords": ["dry mouth", "mouth feels dry"] },
+        { "weight": 3, "keywords": ["dark urine", "urine is dark", "yellow urine"] },
+        { "weight": 3, "keywords": ["barely peeing", "haven't peed", "not urinating"] },
+        { "weight": 2, "keywords": ["dizziness", "lightheaded"] },
+        { "weight": 2, "keywords": ["headache"] }
+      ]
+    },
+    {
+      "name": "Chronic fatigue (suspected)",
+      "description": "Persistent tiredness not relieved by rest. Could indicate anaemia, thyroid issues, depression, sleep disorders, or other underlying causes.",
+      "advice": "See a GP for blood tests (CBC, thyroid, vitamin D, B12). If sleep is the issue, also consider a sleep evaluation.",
+      "urgency": "low",
+      "specialisations": ["General Medicine"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["always tired", "i'm always tired", "tired all the time", "constantly tired"] },
+        { "weight": 4, "keywords": ["chronic fatigue", "chronically tired", "no energy"] },
+        { "weight": 3, "keywords": ["exhausted", "exhausted all the time"] },
+        { "weight": 3, "keywords": ["sleeping doesn't help", "still tired after sleeping"] },
+        { "weight": 2, "keywords": ["weak", "feel weak"] }
+      ]
+    },
+    {
+      "name": "Vertigo (BPPV)",
+      "description": "A sudden sense of spinning, often triggered by head movement.",
+      "advice": "Most cases settle with simple positioning manoeuvres. See a neurologist or ENT if recurrent or with hearing changes.",
+      "urgency": "moderate",
+      "specialisations": ["Neurology", "ENT"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["vertigo", "room is spinning", "everything is spinning", "the room is spinning", "spinning"] },
+        { "weight": 4, "keywords": ["dizziness when turning head", "dizzy when i lie down", "feel dizzy"] },
+        { "weight": 3, "keywords": ["balance problems", "off balance", "can't keep balance"] },
+        { "weight": 3, "keywords": ["nausea"] }
+      ]
+    },
+    {
+      "name": "Ear infection",
+      "description": "An infection of the middle or outer ear, common in children. Often follows a cold.",
+      "advice": "See a doctor — most need antibiotics. Persistent ear pain in young children needs prompt evaluation.",
+      "urgency": "moderate",
+      "specialisations": ["ENT", "Pediatrics"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["ear pain", "earache", "ear hurts", "my ear hurts"] },
+        { "weight": 4, "keywords": ["ear infection"] },
+        { "weight": 4, "keywords": ["fluid from ear", "ear discharge"] },
+        { "weight": 3, "keywords": ["muffled hearing", "can't hear well", "hearing reduced in one ear"] },
+        { "weight": 2, "keywords": ["tugging at ear", "child pulling ear"] },
+        { "weight": 2, "keywords": ["fever"] }
+      ]
+    },
+    {
+      "name": "Dry skin (xerosis)",
+      "description": "Patches of rough, flaky, sometimes itchy skin — most common in winter or in air-conditioned rooms.",
+      "advice": "Use a thick fragrance-free moisturiser twice a day, especially after bathing. Avoid hot showers. See a dermatologist if it doesn't improve in 2–3 weeks.",
+      "urgency": "low",
+      "specialisations": ["Dermatology"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["dry skin", "skin is dry", "really dry skin"] },
+        { "weight": 4, "keywords": ["flaky skin", "peeling skin", "rough skin"] },
+        { "weight": 3, "keywords": ["tight skin", "skin feels tight"] },
+        { "weight": 2, "keywords": ["itchy"] }
+      ]
+    },
+    {
+      "name": "Dandruff",
+      "description": "Scaly, flaky scalp — often a mild form of seborrhoeic dermatitis.",
+      "advice": "Use an anti-dandruff shampoo (with zinc pyrithione, ketoconazole, or salicylic acid) 2–3 times a week. Persistent dandruff may need a dermatologist.",
+      "urgency": "low",
+      "specialisations": ["Dermatology"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["dandruff", "flaky scalp"] },
+        { "weight": 4, "keywords": ["white flakes in hair", "flakes on shoulders", "flakes on my hair"] },
+        { "weight": 3, "keywords": ["itchy scalp", "scalp itches", "head itches"] },
+        { "weight": 2, "keywords": ["dry scalp"] }
+      ]
+    },
+    {
+      "name": "Athlete's foot",
+      "description": "A common fungal infection between the toes causing itching, peeling, and burning.",
+      "advice": "Keep feet dry, change socks daily, and use an OTC antifungal cream. See a dermatologist if it doesn't clear in 2 weeks.",
+      "urgency": "low",
+      "specialisations": ["Dermatology"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["itchy feet", "feet itching", "athletes foot", "athlete's foot"] },
+        { "weight": 4, "keywords": ["peeling skin between toes", "cracked skin between toes"] },
+        { "weight": 3, "keywords": ["burning feet"] },
+        { "weight": 2, "keywords": ["fungal infection"] }
+      ]
+    },
+    {
+      "name": "Hemorrhoids",
+      "description": "Swollen veins around the anus or lower rectum, causing discomfort, itching, or bleeding during bowel movements.",
+      "advice": "Increase fibre and water; avoid straining. Sitz baths and OTC creams help. See a doctor if there's persistent bleeding or severe pain.",
+      "urgency": "low",
+      "specialisations": ["General Medicine"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["hemorrhoids", "haemorrhoids", "piles"] },
+        { "weight": 4, "keywords": ["blood when pooping", "bleeding when going to the toilet", "blood in stool"] },
+        { "weight": 3, "keywords": ["itchy bottom", "itching around anus"] },
+        { "weight": 3, "keywords": ["pain when pooping", "painful bowel movement"] }
+      ]
+    },
+    {
+      "name": "Varicose veins",
+      "description": "Enlarged, twisted veins, most often in the legs — caused by weak valves in the veins.",
+      "advice": "Elevate legs, wear compression stockings, avoid long periods of standing. See a doctor if veins become painful or skin changes appear.",
+      "urgency": "low",
+      "specialisations": ["General Medicine"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["varicose veins", "varicose"] },
+        { "weight": 4, "keywords": ["swollen veins in leg", "twisted veins", "bulging veins"] },
+        { "weight": 3, "keywords": ["heavy legs", "aching legs", "legs feel heavy"] },
+        { "weight": 2, "keywords": ["swelling in ankles"] }
+      ]
+    },
+    {
+      "name": "Motion sickness",
+      "description": "Nausea and dizziness from travel — car, bus, boat, plane.",
+      "advice": "Sit facing forward, look at the horizon, avoid heavy meals before travel. OTC antihistamines (e.g. dimenhydrinate) taken before travel help most cases.",
+      "urgency": "low",
+      "specialisations": ["ENT"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["motion sickness", "car sick", "carsick", "travel sickness"] },
+        { "weight": 4, "keywords": ["nauseous in the car", "throw up in the car", "feel sick in the bus"] },
+        { "weight": 3, "keywords": ["dizzy when travelling", "queasy when riding"] },
+        { "weight": 2, "keywords": ["nausea"] }
+      ]
+    },
+    {
+      "name": "Hangover",
+      "description": "The unpleasant after-effects of drinking too much alcohol — usually dehydration, headache, and nausea.",
+      "advice": "Drink water and eat something bland. Rest. Avoid 'hair of the dog'. If you regularly need to drink to feel normal, please speak with a doctor — that's a more serious concern than the hangover itself.",
+      "urgency": "low",
+      "specialisations": ["General Medicine"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["hangover", "drank too much", "drank a lot last night"] },
+        { "weight": 3, "keywords": ["headache after drinking", "head hurts after drinking"] },
+        { "weight": 3, "keywords": ["nausea after drinking"] },
+        { "weight": 2, "keywords": ["very thirsty"] }
+      ]
+    },
+    {
+      "name": "Period cramps (dysmenorrhea)",
+      "description": "Cramping pain in the lower abdomen before or during menstruation.",
+      "advice": "Heating pads, gentle exercise, and OTC pain relievers help most cases. See a gynecologist if pain is severe enough to disrupt daily life.",
+      "urgency": "low",
+      "specialisations": ["Gynecology"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["period pain", "period cramps", "menstrual cramps", "cramps during period"] },
+        { "weight": 4, "keywords": ["painful periods", "heavy periods"] },
+        { "weight": 4, "keywords": ["dysmenorrhea"] },
+        { "weight": 3, "keywords": ["lower belly pain", "lower abdomen cramps"] },
+        { "weight": 2, "keywords": ["back pain during period"] }
+      ]
+    },
+    {
+      "name": "Insomnia",
+      "description": "Difficulty falling or staying asleep, leading to daytime tiredness.",
+      "advice": "Keep a regular sleep schedule, limit screens before bed, avoid afternoon caffeine. A psychiatrist or GP can help if it's chronic.",
+      "urgency": "low",
+      "specialisations": ["Psychiatry"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["can't sleep", "trouble sleeping", "insomnia", "cannot fall asleep", "i can't sleep"] },
+        { "weight": 4, "keywords": ["waking up at night", "waking up early", "wake up too early"] },
+        { "weight": 3, "keywords": ["tired during the day", "exhausted during the day"] },
+        { "weight": 2, "keywords": ["restless at night"] }
+      ]
+    },
+    {
+      "name": "Attention difficulties (possible ADHD)",
+      "description": "Persistent trouble focusing, finishing tasks, or sitting still — could indicate ADHD or another condition. Diagnosis requires a proper psychiatric assessment, not a self-test.",
+      "advice": "Please see a psychiatrist for proper evaluation — ADHD is genuinely diagnosable but it isn't something a chatbot can confirm. Bring specific examples of how attention issues affect work, school, or relationships.",
+      "urgency": "low",
+      "specialisations": ["Psychiatry"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["adhd", "attention deficit"] },
+        { "weight": 4, "keywords": ["can't focus", "cannot focus", "trouble focusing", "hard to focus"] },
+        { "weight": 4, "keywords": ["can't concentrate", "trouble concentrating"] },
+        { "weight": 3, "keywords": ["easily distracted", "get distracted easily"] },
+        { "weight": 3, "keywords": ["forget things", "always forgetting", "forgetful"] },
+        { "weight": 2, "keywords": ["restless", "can't sit still"] }
+      ]
+    },
+    {
+      "name": "Panic attack",
+      "description": "A sudden surge of intense fear with physical symptoms — racing heart, sweating, chest tightness, sense of doom — peaking within 10 minutes.",
+      "advice": "Slow your breathing (in for 4, hold for 4, out for 4). Find a quiet place. Recurring panic attacks are very treatable — please see a psychiatrist.",
+      "urgency": "moderate",
+      "specialisations": ["Psychiatry"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["panic attack", "panic attacks", "having a panic attack"] },
+        { "weight": 4, "keywords": ["sudden fear", "overwhelming fear"] },
+        { "weight": 4, "keywords": ["heart racing", "racing heart"] },
+        { "weight": 3, "keywords": ["feeling like i'm dying", "feel like i'm going to die", "sense of doom"] },
+        { "weight": 3, "keywords": ["sweating", "shaking"] },
+        { "weight": 3, "keywords": ["can't catch my breath", "hyperventilating"] }
+      ]
+    },
+    {
+      "name": "Social anxiety",
+      "description": "Intense fear of social situations, judgement, or embarrassment — strong enough to interfere with daily life.",
+      "advice": "Talk therapy (especially CBT) is highly effective. A psychiatrist or counsellor can help build a treatment plan, sometimes with medication.",
+      "urgency": "low",
+      "specialisations": ["Psychiatry"],
+      "symptoms": [
+        { "weight": 5, "keywords": ["social anxiety", "socially anxious"] },
+        { "weight": 4, "keywords": ["afraid of people", "scared of people", "afraid of crowds"] },
+        { "weight": 4, "keywords": ["fear of public speaking", "scared to talk in public"] },
+        { "weight": 3, "keywords": ["avoid social situations", "avoid parties", "avoid people"] },
+        { "weight": 3, "keywords": ["blush easily", "embarrassed easily"] },
+        { "weight": 2, "keywords": ["heart races in social situations"] }
+      ]
+    },
+
+    {
+      "name": "Minor everyday health concern",
+      "description": "Your description sounds like a routine, non-specific complaint. A GP visit is a sensible first step — they can examine you and refer to a specialist if needed.",
+      "advice": "Try to describe the symptom more specifically (where, how long, how it feels). Meanwhile, a General Medicine doctor is the right entry point for unclear concerns.",
+      "urgency": "low",
+      "specialisations": ["General Medicine"],
+      "symptoms": [
+        { "weight": 1, "keywords": ["feel weird", "feeling weird", "feel funny", "feel off", "not feeling right", "something is wrong with me"] },
+        { "weight": 1, "keywords": ["feel sick", "feeling sick", "not feeling well", "feel unwell"] },
+        { "weight": 1, "keywords": ["my tummy is funny", "my belly is weird", "stomach feels funny", "tummy feels funny"] },
+        { "weight": 1, "keywords": ["my eye is weird", "my eye feels weird", "something in my eye"] },
+        { "weight": 1, "keywords": ["my ear is weird", "my ear feels weird"] },
+        { "weight": 1, "keywords": ["i feel tired"] },
+        { "weight": 1, "keywords": ["i don't feel good", "i feel bad"] }
+      ]
+    }
+  ]
+}
