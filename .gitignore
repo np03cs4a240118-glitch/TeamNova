@@ -1,0 +1,29 @@
+# ========================
+# MediBook - .gitignore
+# ========================
+
+# Scratch / throwaway scripts
+scratch_*.php
+replace_logo.php
+
+# Test / debug files
+admin/test_admin.php
+payment/test_sig.php
+payment/mock_esewa.php
+payment/esewa_test_form.php
+payment/esewa_debug.log
+
+# Log files
+*.log
+verification_log.txt
+
+# User uploads (binary/personal files)
+uploads/
+
+# PHP environment / config overrides
+.env
+config/local_*.php
+
+# OS files
+.DS_Store
+Thumbs.db
